@@ -182,35 +182,28 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex bg-[#f4f1ed]">
       {/* Left side - Branding */}
-      <div className="hidden lg:flex lg:w-1/2 bg-charcoal gear-pattern relative overflow-hidden">
+      <div className="hidden lg:flex lg:w-[52%] bg-[#2f3136] gear-pattern relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.05),transparent_45%),radial-gradient(circle_at_80%_80%,rgba(0,0,0,0.3),transparent_50%)]" />
         <div className="absolute inset-0 flex flex-col items-center justify-center p-12">
-          {/* Large decorative gears */}
-          <div className="absolute top-20 left-20 opacity-10">
-            <Cog size={200} className="text-primary" />
+          {/* Decorative gears */}
+          <div className="absolute top-20 left-24 opacity-[0.16]">
+            <Cog size={132} className="text-[#5b4138]" />
           </div>
-          <div className="absolute bottom-32 right-16 opacity-10">
-            <Cog size={150} className="text-secondary" />
+          <div className="absolute bottom-24 right-20 opacity-[0.2]">
+            <Cog size={116} className="text-[#6b5548]" />
           </div>
-          <div className="absolute top-1/3 right-1/4 opacity-5">
-            <Cog size={300} className="text-white" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[42%] opacity-[0.12]">
+            <Cog size={280} className="text-[#8b8e95]" />
+          </div>
+          <div className="absolute top-[36%] left-[46%] -translate-x-1/2 -translate-y-1/2 opacity-90">
+            <Cog size={92} className="text-primary" strokeWidth={1.5} />
           </div>
 
           {/* Main content */}
-          <div className="relative z-10 text-center">
-            <div className="flex justify-center mb-8">
-              <div className="relative">
-                <Cog size={120} className="text-primary" strokeWidth={1} />
-                <Cog
-                  size={120}
-                  className="absolute top-0 left-0 text-primary/50"
-                  strokeWidth={1}
-                  style={{ transform: 'rotate(22.5deg)' }}
-                />
-              </div>
-            </div>
-            <h1 className="text-5xl font-bold text-white mb-4">ImpexLink</h1>
+          <div className="relative z-10 text-center mt-40">
+            <h1 className="text-5xl font-bold text-white mb-4 tracking-tight">ImpexLink</h1>
             <p className="text-xl text-white/80 mb-2">Smarter Inventory. Faster Delivery.</p>
             <p className="text-white/60 max-w-md mx-auto mt-8">
               Complete inventory, ordering, and logistics management for Impex Engineering and Industrial Supply.
@@ -220,14 +213,14 @@ export default function Login() {
       </div>
 
       {/* Right side - Login Form */}
-      <div className="flex-1 flex items-center justify-center p-8 bg-background">
+      <div className="flex-1 flex items-center justify-center p-8 bg-[#f4f1ed]">
         <div className="w-full max-w-md">
           {/* Mobile logo */}
           <div className="lg:hidden flex justify-center mb-8">
             <Logo size="lg" />
           </div>
 
-          <Card className="border-border shadow-lg">
+          <Card className="rounded-[30px] border border-[#dcd6cf] bg-[#fffdfa] shadow-[0_14px_30px_rgba(44,62,80,0.12)]">
             <CardHeader className="space-y-1">
               <CardTitle className="text-2xl font-bold text-center">Welcome Back</CardTitle>
               <CardDescription className="text-center">
