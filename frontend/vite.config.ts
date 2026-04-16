@@ -8,6 +8,9 @@ export default defineConfig(({ mode }) => {
   const projectRoot = __dirname;
   const env = loadEnv(mode, projectRoot, "");
   const apiTarget = env.VITE_API_URL || "http://localhost:4000";
+  const buildOutDir = env.BUILD_OUTPUT_DIR
+    ? path.resolve(projectRoot, env.BUILD_OUTPUT_DIR)
+    : path.resolve(projectRoot, "../backend/public");
 
   return {
     root: projectRoot,
@@ -28,7 +31,7 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [react()],
     build: {
-      outDir: path.resolve(projectRoot, "../backend/public"),
+      outDir: buildOutDir,
       emptyOutDir: true,
     },
     css: {

@@ -36,7 +36,6 @@ const frontendDistDir = path.join(__dirname, '..', 'public');
 const allowedOrigins = process.env.CORS_ORIGIN
   ? process.env.CORS_ORIGIN.split(',').map((origin) => origin.trim()).filter(Boolean)
   : [];
-const corsOrigin = allowedOrigins.length > 0 ? allowedOrigins : '*';
 
 function getExpectedOrigin(req) {
   const forwardedProto = req.headers['x-forwarded-proto'];
@@ -47,7 +46,15 @@ function getExpectedOrigin(req) {
 
 app.set('trust proxy', 1);
 
-app.use(cors({ origin: corsOrigin, credentials: true }));
+app.use(cors({
+  origin(origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.length === 0) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(new Error(`Origin not allowed by CORS: ${origin}`));
+  },
+  credentials: true,
+}));
 app.use(express.json({ limit: '2mb' }));
 app.use('/uploads', express.static(uploadsDir));
 app.use(morgan('dev'));
@@ -56,7 +63,7 @@ app.use(morgan('dev'));
 app.use((req, res, next) => {
   const method = req.method.toUpperCase();
   if (['GET', 'HEAD', 'OPTIONS'].includes(method)) return next();
-  if (corsOrigin === '*') return next();
+  if (allowedOrigins.length === 0) return next();
 
   const origin = req.headers.origin || '';
   const expectedOrigin = getExpectedOrigin(req);
