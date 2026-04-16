@@ -4,6 +4,7 @@
   "private": true,
   "main": "backend/src/index.js",
   "scripts": {
+    "prestart": "npm run prisma:generate",
     "start": "node backend/src/index.js",
     "dev": "node --watch backend/src/index.js",
     "dev:frontend": "vite --config frontend/vite.config.ts",
